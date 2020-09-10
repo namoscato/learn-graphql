@@ -17,10 +17,9 @@
 
 <script>
 import TodoItem from "../components/TodoItem";
-import TodoFilters from "../components/TodoFilters";
 export default {
   components: {
-    TodoItem, TodoFilters
+    TodoItem
   },
   data: function() {
     return {

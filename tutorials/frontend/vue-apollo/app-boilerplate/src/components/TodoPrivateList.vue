@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="todoListwrapper">
-      <TodoItem 
-        v-bind:todos="filteredTodos" 
-        v-bind:type="type" 
+      <TodoItem
+        v-bind:todos="filteredTodos"
+        v-bind:type="type"
       />
     </div>
-    <TodoFilters 
-      v-bind:remainingTodos="remainingTodos" 
-      v-bind:filterResults="filterResults" 
+    <TodoFilters
+      v-bind:remainingTodos="remainingTodos"
+      v-bind:filterResults="filterResults"
       v-bind:filterType="filterType"
       v-bind:type="type"
       v-bind:clearCompleted="clearCompleted"
@@ -49,12 +49,12 @@ export default {
       return activeTodos.length
     },
     filteredTodos: function() {
-      if (this.filterType === 'all') {
-        return this.todos
-      } else if(this.filterType === 'active') {
+      if (this.filterType === 'active') {
         return this.todos.filter((todo) => todo.is_completed !== true);
       } else if (this.filterType === 'completed') {
         return this.todos.filter((todo) => todo.is_completed === true);
+      } else {
+        return this.todos;
       }
     }
   },

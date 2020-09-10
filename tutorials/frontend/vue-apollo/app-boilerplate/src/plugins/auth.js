@@ -1,17 +1,17 @@
 import authService from "../auth/authService";
 
 export default {
-  install(Vue) {
-    Vue.prototype.$auth = authService;
+  install(app) {
+    app.config.globalProperties.$auth = authService;
 
-    Vue.mixin({
+    app.mixin({
       created() {
         if (this.handleLoginEvent) {
           authService.addListener("loginEvent", this.handleLoginEvent);
         }
       },
 
-      destroyed() {
+      unmounted() {
         if (this.handleLoginEvent) {
           authService.removeListener("loginEvent", this.handleLoginEvent);
         }
